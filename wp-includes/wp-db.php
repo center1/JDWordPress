@@ -1398,11 +1398,11 @@ class wpdb {
 			return false;
 		} else if ( $this->dbh ) {
 			$this->has_connected = true;
-			$this->set_charset( $this->dbh );
+			
 			$this->set_sql_mode();
 			$this->ready = true;
 			$this->select( $this->dbname, $this->dbh );
-
+			$this->set_charset( $this->dbh );
 			return true;
 		}
 
