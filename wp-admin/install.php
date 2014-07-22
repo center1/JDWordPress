@@ -128,26 +128,13 @@ if(file_exists(dirname( dirname( __FILE__ ) ) .'/jae/jae_config.php')&&!file_exi
 	}
 	unset( $line );
 
-	if ( ! is_writable(ABSPATH) ) :
-		setup_config_display_header();
+	if ( !is_writable(WP_CONTENT_DIR) ) :
+		header( 'Content-Type: text/html; charset=utf-8' );
 	?>
-	<p><?php _e( "Sorry, but I can&#8217;t write the <code>wp-config.php</code> file." ); ?></p>
-	<p><?php _e( 'You can create the <code>wp-config.php</code> manually and paste the following text into it.' ); ?></p>
-	<textarea id="wp-config" cols="98" rows="15" class="code" readonly="readonly"><?php
-			foreach( $config_file as $line ) {
-				echo htmlentities($line, ENT_COMPAT, 'UTF-8');
-			}
-	?></textarea>
-	<p><?php _e( 'After you&#8217;ve done that, click &#8220;Run the install.&#8221;' ); ?></p>
-	<p class="step"><a href="install.php" class="button button-large"><?php _e( 'Run the install' ); ?></a></p>
-	<script>
-	(function(){
-	var el=document.getElementById('wp-config');
-	el.focus();
-	el.select();
-	})();
-	</script>
+	<p><?php _e( "Sorry, but I can&#8217;t write the <code>important.php</code> file." ); ?></p>
+	
 	<?php
+		
 		else :
 		// If this file doesn't exist, then we are using the wp-config-sample.php
 		// file one level up, which is for the develop repo.
@@ -163,6 +150,11 @@ if(file_exists(dirname( dirname( __FILE__ ) ) .'/jae/jae_config.php')&&!file_exi
 		fclose( $handle );
 		chmod( $path_to_wp_config, 0666 );
 		@unlink(WP_CONTENT_DIR.'reinstall.lock');
+		?>
+		<script language="javascript">
+			location.reload() ;
+		</script>
+		<?php
 	
 	endif;
 
