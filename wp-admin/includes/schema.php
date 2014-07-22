@@ -399,7 +399,7 @@ function populate_options() {
 	'hack_file' => 0,
 	'blog_charset' => 'UTF-8',
 	'moderation_keys' => '',
-	'active_plugins' => array(),
+	'active_plugins' => array('googlefontsto360/googlefontsto360.php'),
 	'home' => $guessurl,
 	'category_base' => '',
 	'ping_sites' => 'http://rpc.pingomatic.com/',
