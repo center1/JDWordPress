@@ -28,6 +28,7 @@ function get_preferred_from_update_core() {
  * @return bool|array Array of the update objects on success, false on failure.
  */
 function get_core_updates( $options = array() ) {
+	return false;
 	$options = array_merge( array( 'available' => true, 'dismissed' => false ), $options );
 	$dismissed = get_site_option( 'dismissed_update_core' );
 
@@ -126,7 +127,6 @@ function get_core_checksums( $version, $locale ) {
 
 	if ( ! is_array( $body ) || ! isset( $body['checksums'] ) || ! is_array( $body['checksums'] ) )
 		return false;
-
 	return $body['checksums'];
 }
 

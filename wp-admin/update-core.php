@@ -142,7 +142,6 @@ function core_upgrade_preamble() {
 	global $wp_version, $required_php_version, $required_mysql_version;
 
 	$updates = get_core_updates();
-
 	if ( !isset($updates[0]->response) || 'latest' == $updates[0]->response ) {
 		echo '<h3>';
 		_e('You have the latest version of WordPress.');
